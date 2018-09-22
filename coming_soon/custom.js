@@ -11,14 +11,26 @@ $(document).ready(function () {
     $('.screen').toggleClass('glitch');
   });
 
-  var newDate = new Date();
-  newDate.setDate(newDate.getDate());
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
 
-  setInterval(function () {
+  let countDown = new Date('Oct 03, 2018 00:00:00').getTime(),
 
-    var hours = new Date().getHours();
-    var seconds = new Date().getSeconds();
-    var minutes = new Date().getMinutes();
+
+  // var newDate = new Date();
+  // newDate.setDate(newDate.getDate());
+
+    x = setInterval(function () {
+
+    let now = new Date().getTime(),
+    distance = countDown - now;
+
+    var days = Math.floor(distance / (day));
+    var hours = Math.floor((distance % (day)) / (hour)) + (days * 24);
+    var seconds = Math.floor((distance % (minute)) / second);
+    var minutes = Math.floor((distance % (hour)) / (minute));
 
     var realTime = (hours < 10 ? '0' : '') + hours + ' : ' + (minutes < 10 ? '0' : '') + minutes + ' : ' + (seconds < 10 ? '0' : '') + seconds
 
@@ -26,5 +38,4 @@ $(document).ready(function () {
     $('.time').attr('data-time', realTime);
 
   }, 1000);
-
 });
