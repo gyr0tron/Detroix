@@ -747,6 +747,8 @@ footer,
 .card-text {
   margin-bottom: 2%;
   margin-top: 5%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .card-flip,
